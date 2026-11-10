@@ -438,10 +438,10 @@ def load_done(path):
 
 
 def append_row(path, row):
-    new = not path.exists()
+    needs_header = (not path.exists()) or path.stat().st_size == 0
     with open(path, "a", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=RAW_COLUMNS, extrasaction="ignore")
-        if new:
+        if needs_header:
             w.writeheader()
         w.writerow(row)
 
