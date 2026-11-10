@@ -1,0 +1,53 @@
+{
+  "seed": 42,
+  "cutoff": "2024-01-01T00:00:00Z",
+  "pre_start": "2023-01-01T00:00:00Z",
+  "label_days": 180,
+  "sensitivity_days": [
+    90,
+    365
+  ],
+  "min_pre_human": 5,
+  "min_pre_for_label": 3,
+  "page_cap": 5,
+  "target_eligible": 30,
+  "pilot": true,
+  "languages": [
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "Go",
+    "Rust",
+    "Java",
+    "Dart"
+  ],
+  "star_bands": [
+    [
+      "10-49",
+      "10..49"
+    ],
+    [
+      "50-499",
+      "50..499"
+    ],
+    [
+      "500plus",
+      ">=500"
+    ]
+  ],
+  "created_periods": [
+    [
+      "pre2020",
+      "<2020-01-01"
+    ],
+    [
+      "2020-2022",
+      "2020-01-01..2022-12-31"
+    ]
+  ],
+  "search_pages_per_query": 1,
+  "started_utc": "2026-11-10T11:07:39Z",
+  "finished_utc": "2026-11-10T11:15:16Z",
+  "python": "3.13.16",
+  "requests": "2.34.2"
+}
