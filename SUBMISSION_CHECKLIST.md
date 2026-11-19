@@ -1,0 +1,11 @@
+- [ ] Collect initial GitHub repository data (`raw.csv`, 397 rows) and log collection dates in `metadata.csv`.
+- [ ] Fix `top_author_share` floating-point division and assert `top_author_share >= 0.5` whenever `bus_factor_50 == 1`.
+- [ ] Filter out repositories with `< 3` pre-window commits, tutorial-like repos, and `< 5` total commits to leave 250 eligible rows.
+- [ ] Enforce the `2024-01-01` temporal cutoff and assert no `FORBIDDEN` post-cutoff fields enter modeling features.
+- [ ] Verify EDA summary statistics and decay rates across bus factor groups (`24%` at 1, `10%` at 2, `0%` at >= 3).
+- [ ] Split data 80/20 (`200` train, `50` test) and fit `log1p`, `StandardScaler`, and `GridSearchCV` strictly inside training folds.
+- [ ] Compare majority baseline (`F1 = 0.00`), activity-only k-NN (`k = 3`, `F1 = 0.50`), and combined k-NN (`k = 5`, `F1 = 0.43`).
+- [ ] Run K-Means (`k = 2` to `5`) and confirm `k = 2` (`silhouette = 0.307`, `ARI = 1.0`, `30%` vs. `3%` cluster decay).
+- [ ] Run `Kernel -> Restart & Run All` so notebook tables, plots, and `model_results.json` are fully synced.
+- [ ] Replace all `[ ]` placeholders and outdated counts across Markdown cells with finalized numbers.
+- [ ] Generate and proofread the 3-page `.docx` report formatted in Times New Roman.
