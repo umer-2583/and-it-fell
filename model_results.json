@@ -1,0 +1,110 @@
+{
+  "clustering": {
+    "method": "KMeans",
+    "seed": 42,
+    "features": [
+      "top_author_share",
+      "num_contributors_12m",
+      "human_commits_12m_pre",
+      "days_since_last_commit_pre",
+      "repo_age_days_at_T"
+    ],
+    "preprocessing": "log1p on count features, StandardScaler",
+    "silhouette_by_k": {
+      "2": 0.3069,
+      "3": 0.2931,
+      "4": 0.2906,
+      "5": 0.2765
+    },
+    "chosen_k": 2,
+    "seed_stability_ari": 1.0,
+    "cluster_sizes": {
+      "0": 145,
+      "1": 105
+    }
+  },
+  "project_id": "T-14",
+  "seed": 42,
+  "supervised": {
+    "task": "binary classification",
+    "target": "maintenance_decayed",
+    "split": {
+      "test_size": 0.2,
+      "stratified": true,
+      "n_train": 200,
+      "n_test": 50,
+      "decayed_share_train": 0.19,
+      "decayed_share_test": 0.18
+    },
+    "positive_class": 1,
+    "k_selection": "5-fold stratified CV on training set, scoring F1",
+    "preprocessing": "log1p on commit and contributor counts, StandardScaler, fit on train only",
+    "models": {
+      "Baseline (majority)": {
+        "accuracy": 0.82,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "confusion_matrix": [
+          [
+            41,
+            0
+          ],
+          [
+            9,
+            0
+          ]
+        ]
+      },
+      "k-NN activity only": {
+        "accuracy": 0.84,
+        "precision": 0.5714285714285714,
+        "recall": 0.4444444444444444,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            38,
+            3
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "best_k": 3,
+        "cv_f1_train": 0.305,
+        "features": [
+          "human_commits_12m_pre",
+          "days_since_last_commit_pre",
+          "repo_age_days_at_T"
+        ]
+      },
+      "k-NN activity + concentration": {
+        "accuracy": 0.88,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            41,
+            0
+          ],
+          [
+            6,
+            3
+          ]
+        ],
+        "best_k": 7,
+        "cv_f1_train": 0.328,
+        "features": [
+          "human_commits_12m_pre",
+          "days_since_last_commit_pre",
+          "repo_age_days_at_T",
+          "top_author_share",
+          "bus_factor_50",
+          "num_contributors_12m"
+        ]
+      }
+    }
+  }
+}
